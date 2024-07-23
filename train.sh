@@ -5,9 +5,10 @@ RUNNAME="infi"
 OUTPUTPATH="./"
 TOTALBSZ=80
 BSZPERDEV=8
-DEVICES="0"
-NUMGPUS=$(echo $DEVICES | awk -F',' '{print NF}')
-GRADACC=$(($TOTALBSZ/$NUMGPUS/$BSZPERDEV))
+# DEVICES="0"
+# NUM_GPUS=$(echo $DEVICES | awk -F',' '{print NF}')
+NUM_GPUS=1
+GRADACC=$(($TOTALBSZ/$NUM_GPUS/$BSZPERDEV))
 EPOCHNUM=1
 echo "Training  model ${MODEL_SIZE} using $NUM_GPUS GPUs, $BSZPERDEV batch size per GPU, $GRADACC gradient accumulation steps"
 #deepspeed --include localhost:$DEVICES --master_port 29502

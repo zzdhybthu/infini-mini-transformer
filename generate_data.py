@@ -1,11 +1,6 @@
-import os
-from unicodedata import normalize
-
-import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 import ujson
-from rich import progress
 
 
 def split_txt_cropus_to_chunk_data(
@@ -34,14 +29,10 @@ def split_txt_cropus_to_chunk_data(
     return chunk_data
 
 
-
-
 def process_none(s: str) -> str:
     if s:
         return s
     return ""
-
-
 
 
 def gen_wiki_filter(origin_file, output_file="../train_datasets/wiki_fi.parquet"):
@@ -58,6 +49,6 @@ def gen_wiki_filter(origin_file, output_file="../train_datasets/wiki_fi.parquet"
         row_group_size=50000,
         data_page_size=50000,
     )
+
+
 gen_wiki_filter("../datasets/wikipedia-cn-20230720-filtered.json")
-
-
